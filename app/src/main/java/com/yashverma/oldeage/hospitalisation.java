@@ -38,7 +38,7 @@ DatabaseReference reference5;
     Add=myview6.findViewById(R.id.h0spital_InfoAdd);
     rootnote5=FirebaseDatabase.getInstance();
     reference5=rootnote5.getReference("Hospitalization");
-    Medicine=myview6.findViewById(R.id.HospitaleDetails);
+//    Medicine=myview6.findViewById(R.id.HospitaleDetails);
     Add.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -48,26 +48,34 @@ DatabaseReference reference5;
             String Discarge_date=Discharge_Date.getText().toString();
             String Treatment=treatment.getText().toString();
             String HpId=Hp_Id.getText().toString();
+            Hospital hospital= new Hospital();
+            Bundle b=new Bundle();
+            b.putString("Hp_Id",HpId);
+            hospital.setArguments(b);
+            FragmentManager fm=getFragmentManager();
+            FragmentTransaction ft=fm.beginTransaction();
+            ft.replace(R.id.Blank,hospital);
+            ft.commit();
          Hospitalization_Info hospitalization_info=new Hospitalization_Info(Hospitalization_Id,Guest_Id,AdmitDate,Discarge_date,Treatment,HpId);
          reference5.child(Hospitalization_Id).setValue(hospitalization_info);
 
         }
     });
-    Medicine.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            String HpId=Hp_Id.getText().toString();
-            Hospital hospital= new Hospital();
-            Bundle b=new Bundle();
-            b.putString("Hp_Id",HpId);
-           hospital.setArguments(b);
-            FragmentManager fm=getFragmentManager();
-            FragmentTransaction ft=fm.beginTransaction();
-            ft.replace(R.id.Blank,hospital);
-            ft.commit();
-
-        }
-    });
+//    Medicine.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View view) {
+//            String HpId=Hp_Id.getText().toString();
+//            Hospital hospital= new Hospital();
+//            Bundle b=new Bundle();
+//            b.putString("Hp_Id",HpId);
+//           hospital.setArguments(b);
+//            FragmentManager fm=getFragmentManager();
+//            FragmentTransaction ft=fm.beginTransaction();
+//            ft.replace(R.id.Blank,hospital);
+//            ft.commit();
+//
+//        }
+//    });
         return myview6;
     }
 }

@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +31,7 @@ public class Medicin extends Fragment {
       View myview= inflater.inflate(R.layout.fragment_medicin, container, false);
       Bundle b=getArguments();
       String mEdId=b.getString("Medicne_Id");
+      String GuId=b.getString("Guest Id");
       Medid=myview.findViewById(R.id.Medi_id);
       Medid.setText(mEdId);
       MedName=myview.findViewById(R.id.Med_Name);
@@ -37,7 +40,7 @@ public class Medicin extends Fragment {
       MedStockcount=myview.findViewById(R.id.Med_Tsock_Count);
       MedAdd=myview.findViewById(R.id.MedAdd);
         Med=FirebaseDatabase.getInstance();
-        MedReference=Med.getReference("MedicineInfo");
+        MedReference=Med.getReference("Medicine Info");
       MedAdd.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
@@ -59,7 +62,15 @@ public class Medicin extends Fragment {
                       Toast.makeText(getActivity(), "unsaved"+e.getMessage(), Toast.LENGTH_SHORT).show();
                   }
               });
-
+              hospitalisation Hospitalization= new hospitalisation();
+               Bundle b= new Bundle();
+               b.putString("Guest_Id",GuId);
+               Hospitalization.setArguments(b);
+               FragmentManager fm=getFragmentManager();
+               FragmentTransaction ft=fm.beginTransaction();
+               ft.replace(R.id.Blank,Hospitalization);
+               ft.addToBackStack(" ");
+               ft.commit();
           }
       });
       return myview;

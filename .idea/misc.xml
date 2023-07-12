@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/OldeAge/app/src/main/res/drawable/rounded.xml" value="0.128" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/OldeAge/app/src/main/res/layout/activity_blank.xml" value="0.22407407407407406" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/OldeAge/app/src/main/res/layout/activity_blank2.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/OldeAge/app/src/main/res/layout/activity_blank_details.xml" value="0.2359375" />
@@ -27,6 +28,7 @@
         <entry key="..\:/Users/DELL/AndroidStudioProjects/OldeAge/app/src/main/res/layout/fragment_singup.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/OldeAge/app/src/main/res/layout/fragment_user_info.xml" value="0.25" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/OldeAge/app/src/main/res/layout/guestcard.xml" value="0.536" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/OldeAge/app/src/main/res/layout/updatepopup.xml" value="0.264" />
       </map>
     </option>
   </component>

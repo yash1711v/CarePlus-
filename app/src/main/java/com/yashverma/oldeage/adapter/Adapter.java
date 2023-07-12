@@ -1,70 +1,131 @@
 package com.yashverma.oldeage.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
-<<<<<<< HEAD
+
+import android.content.DialogInterface;
 import android.content.Intent;
-=======
->>>>>>> origin/master
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-<<<<<<< HEAD
-=======
-import android.widget.Toast;
->>>>>>> origin/master
 
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-<<<<<<< HEAD
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.common.base.MoreObjects;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.orhanobut.dialogplus.DialogPlus;
+import com.orhanobut.dialogplus.ViewHolder;
 import com.yashverma.oldeage.FullDetails.Blank2;
-=======
->>>>>>> origin/master
+
 import com.yashverma.oldeage.R;
 import com.yashverma.oldeage.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.MissingResourceException;
+
 
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
     Context context;
     ArrayList<User> List;
-<<<<<<< HEAD
-    private MyViewHolder.OnRecyclierViewClick onclickLis;
-    public Adapter(Context c, ArrayList<User> l, MyViewHolder.OnRecyclierViewClick oncl) {
+    private CardClick cardClick;
+    public Adapter(Context c, ArrayList<User> l,CardClick cardClick) {
         this.context = c;
         this.List = l;
-        this.onclickLis=oncl;
-=======
+        this.cardClick=cardClick;
 
-    public Adapter(Context c, ArrayList<User> l) {
-        this.context = c;
-        this.List = l;
->>>>>>> origin/master
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v= LayoutInflater.from(context).inflate(R.layout.guestcard,parent,false);
-<<<<<<< HEAD
-        return new MyViewHolder(v,onclickLis);
-=======
-        return new MyViewHolder(v);
->>>>>>> origin/master
+        return new MyViewHolder(v,cardClick);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.guestId.setText(List.get(position).getGuestid());
         holder.guestName.setText(List.get(position).getGuestName());
-<<<<<<< HEAD
+        holder.update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final DialogPlus dgp=DialogPlus.newDialog(holder.guestId.getContext())
+                        .setContentHolder(new ViewHolder(R.layout.updatepopup))
+                        .setExpanded(true,1500)
+                        .create();
+                View view2=dgp.getHolderView();
+                TextView Gid;
+                EditText Gname,Gage,KnownName,KNownNumber,Address,DateofJOining,CakerTakerId;
+                Button UpdatebtnPop;
+               Gid=view2.findViewById(R.id.Gid);
+                Gage=view2.findViewById(R.id.age);
+                KnownName=view2.findViewById(R.id.GuestKNowName);
+                KNownNumber=view2.findViewById(R.id.GuestKNownNumber);
+                Address=view2.findViewById(R.id.Guestaddress);
+                DateofJOining=view2.findViewById(R.id.DateofJoining);
+                CakerTakerId=view2.findViewById(R.id.Cakertakerid);
+                Gname=view2.findViewById(R.id.Name);
+                UpdatebtnPop=view2.findViewById(R.id.Updte);
+                Gid.setText("Guest Id:-"+holder.guestId.getText());
+                Gname.setText(" "+holder.guestName.getText());
+                UpdatebtnPop.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Map<String,Object> map= new HashMap<>();
+                        map.put("guestid",Gid.getText().toString());
+                        map.put("guestName",Gname.getText().toString());
+                        map.put("guestage",Gage.getText().toString());
+                        map.put("guestKnownName",KnownName.getText().toString());
+                        map.put("guestKnownNumber",KNownNumber.getText().toString());
+                        map.put("guestAddress",Address.getText().toString());
+                        map.put("guestDateofJoining",DateofJOining.getText().toString());
+                        map.put("cakertakerId",CakerTakerId.getText().toString());
+                        FirebaseDatabase.getInstance().getReference("Guest Info").updateChildren(map);
 
-=======
->>>>>>> origin/master
+                    }
+                });
+                dgp.show();
+
+            }
+
+        });
+        holder.Delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(holder.guestId.getContext());
+                builder.setTitle("Are you sure You want to delete the data ");
+                builder.setMessage("Deleted data can't be Undo");
+                builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                builder.setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(context, "cancle", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.show();
+            }
+        });
+
+
     }
 
     @Override
@@ -72,62 +133,30 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         return List.size();
     }
 
-<<<<<<< HEAD
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView guestId,guestName;
         Button update, Delete;
-        OnRecyclierViewClick onrcl;
-
-        public MyViewHolder(@NonNull View itemView,OnRecyclierViewClick onrci) {
-=======
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
-
-        TextView guestId,guestName;
-        Button update, Delete;
-        public MyViewHolder(@NonNull View itemView) {
->>>>>>> origin/master
+        CardClick cardClick;
+       // EditText name, age,KnownName,KnownNumber,Address,DatesOfjoining,CaretakerId;
+        public MyViewHolder(@NonNull View itemView,CardClick cardClick) {
             super(itemView);
             guestId=(TextView) itemView.findViewById(R.id.fetchedId);
             guestName=(TextView) itemView.findViewById(R.id.fetchedName);
             update=itemView.findViewById(R.id.Update);
             Delete=itemView.findViewById(R.id.Delete);
-<<<<<<< HEAD
-            this.onrcl=onrci;
-            itemView.setOnClickListener(this);
-            update.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Context context= itemView.getContext();
-                    context.startActivity(new Intent(context,Blank2.class));
-=======
-            update.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Log.d("demo","Update click");
->>>>>>> origin/master
-                }
-            });
-            Delete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Log.d("demo","Delete click");
-                }
-            });
+            this.cardClick=cardClick;
+        itemView.setOnClickListener(this);
         }
-<<<<<<< HEAD
+
 
         @Override
         public void onClick(View view) {
-            onrcl.Onclick(getAdapterPosition());
-        }
-
-        public  interface  OnRecyclierViewClick{
-           void Onclick(int position);
-=======
-        public  interface  OnRecyclierViewClick{
-            void Onclick(int position);
->>>>>>> origin/master
+            cardClick.CardClick(getAdapterPosition());
         }
     }
+    public interface CardClick{
+        void CardClick(int position);
+    }
 }
+

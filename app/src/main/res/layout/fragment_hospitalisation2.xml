@@ -92,23 +92,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="Add"
+        android:text="Next"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/Treatement"
         app:layout_constraintStart_toStartOf="@+id/Treatement"
         app:layout_constraintTop_toBottomOf="@+id/Treatement"
         app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/HospitaleDetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="28dp"
-        android:text="Hospital_Details"
-        app:layout_constraintEnd_toEndOf="@+id/Treatement"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/h0spital_InfoAdd"
-        app:layout_constraintTop_toBottomOf="@+id/Treatement" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

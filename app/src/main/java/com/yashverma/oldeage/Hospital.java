@@ -1,8 +1,11 @@
 package com.yashverma.oldeage;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +15,8 @@ import android.widget.EditText;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.yashverma.oldeage.FullDetails.Blank2;
+import com.yashverma.oldeage.FullDetails.GuestDetails;
 
 public class Hospital extends Fragment {
 EditText Hospital_Id,Hospital_Name,Hospital_mobile,Hospital_Email,Hospital_address;
@@ -23,7 +28,10 @@ DatabaseReference reference6;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myView=inflater.inflate(R.layout.fragment_hospital, container, false);
+        Bundle b=getArguments();
+        String HospitId=b.getString("Hp_Id");
         Hospital_Id=myView.findViewById(R.id.Hospital_Id);
+        Hospital_Id.setText(HospitId);
         Hospital_Name=myView.findViewById(R.id.Hospital_Name);
         Hospital_mobile=myView.findViewById(R.id.Hospital_number);
         Hospital_Email=myView.findViewById(R.id.Hospital_Email);
@@ -41,6 +49,11 @@ DatabaseReference reference6;
                 String Hospital_Address=Hospital_address.getText().toString();
                 HospitalHelper hospitalhelper=new HospitalHelper(Hospital_id,Hospital_name,Hospital_Mbile,Hospital_email,Hospital_Address);
                 reference6.child(Hospital_id).setValue(hospitalhelper);
+                GuestDetails GuestDetails= new GuestDetails();
+                FragmentManager fm=getFragmentManager();
+                FragmentTransaction ft=fm.beginTransaction();
+                ft.replace(R.id.Blank2, GuestDetails);
+                ft.commit();
             }
         });
         return myView;

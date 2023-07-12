@@ -18,11 +18,37 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.yashverma.oldeage.FullDetails.Blank2;
+import com.yashverma.oldeage.FullDetails.GuestDetails;
 import com.yashverma.oldeage.adapter.Adapter;
 
 import java.util.ArrayList;
 
-public class GuestData extends AppCompatActivity implements Adapter.MyViewHolder.OnRecyclierViewClick{
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.yashverma.oldeage.adapter.Adapter;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Queue;
+
+public class GuestData extends AppCompatActivity implements Adapter.CardClick {
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
     Adapter adapter;
@@ -52,6 +78,7 @@ public class GuestData extends AppCompatActivity implements Adapter.MyViewHolder
                     list.add(user);
                     Toast.makeText(GuestData.this, "In recycler View", Toast.LENGTH_SHORT).show();
                 }
+                //adapter=new Adapter(GuestData.this,list,this);
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }
@@ -78,9 +105,8 @@ public class GuestData extends AppCompatActivity implements Adapter.MyViewHolder
     }
 
     @Override
-    public void Onclick(int position) {
-        list.get(position);
-        Intent I= new Intent(GuestData.this, Blank2.class);
+    public void CardClick(int position) {
+        Intent I= new Intent(this,Blank2.class);
         startActivity(I);
     }
 }

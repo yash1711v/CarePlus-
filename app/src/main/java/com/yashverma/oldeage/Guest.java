@@ -43,8 +43,8 @@ public class Guest extends Fragment {
         eg7=myView.findViewById(R.id.Guest_Known_number);
         eg8=myView.findViewById(R.id.cakertaker_id);
         btn=myView.findViewById(R.id.Button3);
-        medication=myView.findViewById(R.id.Medication);
-        hospitalization=myView.findViewById(R.id.HospitalizationButton);
+//        medication=myView.findViewById(R.id.Medication);
+//        hospitalization=myView.findViewById(R.id.HospitalizationButton);
         rootNote2=FirebaseDatabase.getInstance();
         reference2=rootNote2.getReference("Guest Info");
        btn.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +58,19 @@ public class Guest extends Fragment {
                String Guest_Known_Name=eg6.getText().toString();
                String Guest_Known_Number=eg7.getText().toString();
                String CareTaker_id=eg8.getText().toString();
+               String GuId=eg1.getText().toString();
+               hospitalisation Hospitalization= new hospitalisation();
+               Bundle b= new Bundle();
+               b.putString("Guest_Id",GuId);
+               Hospitalization.setArguments(b);
+               Medication MedicationID=new Medication();
+               b.putString("Guest_Id",GuId);
+               MedicationID.setArguments(b);
+               FragmentManager fm=getFragmentManager();
+               FragmentTransaction ft=fm.beginTransaction();
+               ft.replace(R.id.Blank,MedicationID);
+               ft.addToBackStack(" ");
+               ft.commit();
 //                  reference2.push().getKey();
                GuestHelper Ghelper=new GuestHelper(Guest_id,Guest_name.toUpperCase(),Guest_age,Guest_date_of_Joining,Guest_Address,Guest_Known_Name,Guest_Known_Number,CareTaker_id);
                reference2.child(Guest_id).setValue(Ghelper).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -72,40 +85,53 @@ public class Guest extends Fragment {
                        Toast.makeText(getActivity(), "Guest is Not Saved"+e.getMessage(), Toast.LENGTH_SHORT).show();
                    }
                });
+//               String GuId=eg1.getText().toString();
+//               hospitalisation Hospitalization= new hospitalisation();
+//               Bundle b= new Bundle();
+//               b.putString("Guest_Id",GuId);
+//               Hospitalization.setArguments(b);
+//               Medication MedicationID=new Medication();
+//               b.putString("Guest_Id",GuId);
+//               MedicationID.setArguments(b);
+//               FragmentManager fm=getFragmentManager();
+//               FragmentTransaction ft=fm.beginTransaction();
+//               ft.replace(R.id.Blank,MedicationID);
+//               ft.addToBackStack(" ");
+//               ft.commit();
 
            }
        });
-       medication.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               String GuestId=eg1.getText().toString();
-               Medication MedicationID=new Medication();
-               Bundle b=new Bundle();
-               b.putString("Guest_Id",GuestId);
-               MedicationID.setArguments(b);
-               FragmentManager fm=getFragmentManager();
-               FragmentTransaction ft=fm.beginTransaction();
-               ft.replace(R.id.Blank,MedicationID);
-               ft.addToBackStack(" ");
-               ft.commit();
-           }
-       });
-       hospitalization.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               String GuId=eg1.getText().toString();
-               hospitalisation Hospitalization= new hospitalisation();
-               Bundle b= new Bundle();
-               b.putString("Guest_Id",GuId);
-               Hospitalization.setArguments(b);
-               FragmentManager fm=getFragmentManager();
-               FragmentTransaction ft=fm.beginTransaction();
-               ft.replace(R.id.Blank,Hospitalization);
-               ft.addToBackStack(" ");
-               ft.commit();
-
-           }
-       });
+//       medication.setOnClickListener(new View.OnClickListener() {
+//           @Override
+//           public void onClick(View view) {
+//               String GuestId=eg1.getText().toString();
+//               Medication MedicationID=new Medication();
+//               Bundle b=new Bundle();
+//               b.putString("Guest_Id",GuestId);
+//               MedicationID.setArguments(b);
+//               FragmentManager fm=getFragmentManager();
+//               FragmentTransaction ft=fm.beginTransaction();
+//               ft.replace(R.id.Blank,MedicationID);
+//               ft.addToBackStack(" ");
+//               ft.commit();
+//           }
+//       });
+//       hospitalization.setOnClickListener(new View.OnClickListener() {
+//           @Override
+//           public void onClick(View view) {
+//               String GuId=eg1.getText().toString();
+//               hospitalisation Hospitalization= new hospitalisation();
+//               Bundle b= new Bundle();
+//               b.putString("Guest_Id",GuId);
+//               Hospitalization.setArguments(b);
+//               FragmentManager fm=getFragmentManager();
+//               FragmentTransaction ft=fm.beginTransaction();
+//               ft.replace(R.id.Blank,Hospitalization);
+//               ft.addToBackStack(" ");
+//               ft.commit();
+//
+//           }
+//       });
        return myView;
     }
 }

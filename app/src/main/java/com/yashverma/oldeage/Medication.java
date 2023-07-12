@@ -39,7 +39,7 @@ DatabaseReference reference3;
         m8=myview.findViewById(R.id.Remarks);
         m9=myview.findViewById(R.id.Cause_disease_reason);
         btn3=myview.findViewById(R.id.Button3);
-        btn4=myview.findViewById(R.id.Medicine_Button);
+//        btn4=myview.findViewById(R.id.Medicine_Button);
         rootNote3=FirebaseDatabase.getInstance();
         reference3=rootNote3.getReference("Medication");
         btn3.setOnClickListener(new View.OnClickListener() {
@@ -57,23 +57,34 @@ DatabaseReference reference3;
                 String Cause_Disease_Reason=m9.getText().toString();
                 medicationHElper medicationHelper=new medicationHElper(Medication_id,Guest_Id,Medicine_id,Schedule,Dose,Start_Date,End_date,Remarks,Cause_Disease_Reason);
                 reference3.child(Medication_id).setValue(medicationHelper);
+                String MedicineId=m3.getText().toString();
+                String GUestID=m2.getText().toString();
+                Medicin medicine= new Medicin();
+                Bundle b=new Bundle();
+                b.putString("Medicne_Id",MedicineId);
+                b.putString("Guest Id",GUestID);
+                medicine.setArguments(b);
+                FragmentManager fm=getFragmentManager();
+                FragmentTransaction ft=fm.beginTransaction();
+                ft.replace(R.id.Blank,medicine);
+                ft.commit();
             }
         });
-    btn4.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            String MEdicineId=m3.getText().toString();
-            Medicin medicine= new Medicin();
-            Bundle b=new Bundle();
-            b.putString("Medicne_Id",MEdicineId);
-            medicine.setArguments(b);
-            medicine.setArguments(b);
-            FragmentManager fm=getFragmentManager();
-            FragmentTransaction ft=fm.beginTransaction();
-            ft.replace(R.id.Blank,medicine);
-            ft.commit();
-        }
-    });
+//    btn4.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View view) {
+//            String MEdicineId=m3.getText().toString();
+//            Medicin medicine= new Medicin();
+//            Bundle b=new Bundle();
+//            b.putString("Medicne_Id",MEdicineId);
+//            medicine.setArguments(b);
+//            medicine.setArguments(b);
+//            FragmentManager fm=getFragmentManager();
+//            FragmentTransaction ft=fm.beginTransaction();
+//            ft.replace(R.id.Blank,medicine);
+//            ft.commit();
+//        }
+//    });
         return myview;
     }
 
