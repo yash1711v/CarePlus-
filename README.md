@@ -20,18 +20,18 @@ An Android mobile app for caretaker of old-age homes to manage medications of th
 ## Screenshots
 
 <p align="center">
-    <img src="https://github.com/Divyansh-Gemini/CarePlus/assets/88696617/2ab8dda0-fcc6-4ba9-8617-de36087afc98" height="500" alt="splash screen"/>
+    <img src="https://github.com/yash1711v/CarePlus-/assets/88696617/aa0155ba-e766-4045-810b-da3ab35773fe" height="500" alt="splash screen"/>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <img src="https://github.com/Divyansh-Gemini/CarePlus/assets/88696617/a6393ba2-c4e5-43de-8569-fd3582e3b6a3" height="500" alt="navigation drawer"/>
+    <img src="https://github.com/yash1711v/CarePlus-/assets/88696617/0c7de79f-cba6-456b-82fe-9ca8d90b6d30" height="500" alt="navigation drawer"/>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <img src="https://github.com/Divyansh-Gemini/CarePlus/assets/88696617/f42fe83b-ff12-4528-a520-2dcf834473d0" height="500" alt="add guest"/>
+    <img src="https://github.com/yash1711v/CarePlus-/assets/88696617/9f53c302-67ac-4913-a323-dad23807c56a" height="500" alt="add guest"/>
 </p>
 <p align="center">
-    <img src="https://github.com/Divyansh-Gemini/CarePlus/assets/88696617/e74e7bcb-5fb3-4192-a7ea-3f129f46878a" height="500" alt="upload image"/>
+    <img src="https://github.com/yash1711v/CarePlus-/assets/88696617/ae783397-cbd5-409d-b200-5f6050c3b7f7" height="500" alt="upload image"/>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <img src="https://github.com/Divyansh-Gemini/CarePlus/assets/88696617/a1e3ee78-4f75-43ab-9d3a-18ff62664ba4" height="500" alt="add medication"/>
+    <img src="https://github.com/yash1711v/CarePlus-/assets/88696617/a20a996e-b7d0-43f4-8cb1-5daad7a692ef" height="500" alt="add medication"/>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <img src="https://github.com/Divyansh-Gemini/CarePlus/assets/88696617/af8a6c79-6b57-44ff-897e-cae04f3fe16e" height="500" alt="medication reminders"/>
+    <img src="https://github.com/yash1711v/CarePlus-/assets/88696617/b33e4a3c-5914-4bce-87b8-1adc905183b5" height="500" alt="medication reminders"/>
 </p>
 
 ## Installation Steps
