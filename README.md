@@ -34,7 +34,6 @@ An Android mobile app for caretaker of old-age homes to manage medications of th
     <img src="https://github.com/Divyansh-Gemini/CarePlus/assets/88696617/af8a6c79-6b57-44ff-897e-cae04f3fe16e" height="500" alt="medication reminders"/>
 </p>
 
-
 ## Installation Steps
 
 1. Clone the repository.
@@ -42,4 +41,10 @@ An Android mobile app for caretaker of old-age homes to manage medications of th
    git clone https://github.com/Divyansh-Gemini/CarePlus.git
    ```
 2. Open the project in Android Studio.
-3. Run the app on an emulator or a physical device.
+3. Connect the project with Firebase, and make sure that `google-services.json` is there in the `app` directory.
+4. Enable the following in Firebase.
+   - Authentication using Email-Password
+   - Realtime Database
+   - Storage
+5. Create a folder named `guest_images` in Firebase Storage.
+6. Run the app on an emulator or a physical device.
